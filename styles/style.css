@@ -1,0 +1,12 @@
+*{
+  font-family: "Poppins", sans-serif;
+}
+.hind-siliguri-font{
+  font-family: "Hind Siliguri", sans-serif;
+}
+.hero-btn:hover{
+  color: #422AD5;
+  background-color: transparent;
+  
+}
+@import "tailwindcss"
