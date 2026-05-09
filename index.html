@@ -108,18 +108,74 @@
 <!-- MAIN SECTION -->
 
 <!-- VOCABULARY SECTION -->
-<div class="text-4xl font-bold text-center">
+<div class="text-4xl font-bold text-center mt-20 mb-10">
     <span class="text-[#00BCFF]">Let's</span>
     <span>Learn Vocabularies</span>
 </div>
 
+<!-- LEVEL SECTION -->
+<div id="level-container" class="flex flex-wrap justify-center gap-4 px-5 mb-20">
 
+</div> 
+
+<!-- WORD DISPLAY SECTION -->
+<section id="word-container" class="bg-gray-100 rounded-3xl px-6 py-10 w-11/12 mx-auto grid grid-cols-1 grid-rows-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-4 md:grid-rows-2 xl:grid-rows-4 gap-7">
+
+<!-- ALERT SECTION -->
+<div class="col-span-4 row-span-4 mx-auto text-center space-y-3">
+    <img class="mx-auto" src="assets/alert-error.png" alt="">
+    <h3 class="text-xl font-light hind-siliguri-font">আপনি এখনো কোন Lesson Select করেন নি</h3>
+    <h2 class="hind-siliguri-font text-4xl font-semibold">একটি Lesson Select করুন।</h2>
+</div>
+
+</section>
 
 <!-- QUESTION SECTION -->
 <div class="text-4xl font-bold text-center">
     <span class="text-[#00BCFF]">Frequently</span>
     <span>Asked Questions</span>
 </div>
+
+
+
+
+<!-- Open the modal using ID.showModal() method -->
+
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="details-container">
+        <div class="p-4 border-2">
+  <div class="space-y-5 rounded-3xl border border-[#C6BDBD] max-w-[400px] p-4 ">
+        <h2 class="text-2xl font-semibold">Eager <i class="fa-solid fa-microphone-lines"></i>(:ইগার)</h2>
+    <div class="space-y-2">
+        <h1 class="text-xl font-semibold">Meaning</h1>
+        <span class="hind-siliguri-font text-xl ">আগ্রহি</span>
+    </div>
+
+    <div class="space-y-2">
+        <h1 class="text-xl font-semibold">Example</h1>
+        <p class="text-xl">The kids were eager to open their gifts.</p>
+    </div>
+
+    <div class="space-y-2">
+        <h2 class="hind-siliguri-font text-xl font-semibold">সমার্থক শব্দ গুলো</h2>
+        <div class="space-x-2">
+            <p class="btn btn-soft btn-primary">Primary</p>
+            <p class="btn btn-soft btn-primary">Primary</p>
+            <p class="btn btn-soft btn-primary">Primary</p>
+        </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="modal-action justify-start">
+      <form method="dialog">
+            <button class="btn btn-active btn-primary rounded-xl">Complete Learning</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 <!-- FOOTER SECTION -->
@@ -171,6 +227,7 @@
     </div>
     </div>
 </footer>
+
 <script src="script.js"></script>    
 </body>
 </html>
