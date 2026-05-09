@@ -1,7 +1,7 @@
 const createElement = (syn) =>{
-    const create = syn.map((syno)=> `<span class="btn">${syno}</span>`);
+    const create = syn.map((syno)=> `<span class="btn btn-soft btn-primary">${syno}</span>`);
 
-    console.log(create.join(" "));
+    return(create.join(" "));
 }
 
 
@@ -47,20 +47,6 @@ const showWordDetail = (details) => {
     
     const detailsBox = document.getElementById("details-container");
 
-// "word": "Diligent",
-// "meaning": "পরিশ্রমী",
-// "pronunciation": "ডিলিজেন্ট",
-// "level": 5,
-// "sentence": "He is a diligent student who studies every day.",
-// "points": 5,
-// "partsOfSpeech": "adjective",
-// "synonyms": [
-// "hardworking",
-// "industrious",
-// "persistent"
-// ],
-// "id": 4
-
     detailsBox.innerHTML = `
 
   <div class="space-y-5 rounded-3xl border border-[#C6BDBD] p-4 ">
@@ -77,10 +63,8 @@ const showWordDetail = (details) => {
 
     <div class="space-y-2">
         <h2 class="hind-siliguri-font text-xl font-semibold">সমার্থক শব্দ গুলো</h2>
-        <div class="space-x-2">
-            <p class="btn btn-soft btn-primary">${details.synonyms}</p>
-            <p class="btn btn-soft btn-primary">${details.synonyms}</p>
-            <p class="btn btn-soft btn-primary">${details.word}</p>
+        <div class="flex flex-wrap gap-2">
+              ${details.synonyms ? createElement(details.synonyms) : "সমার্থক শব্দ পাওয়া যায় নি"}
         </div>
     </div>
   </div>
