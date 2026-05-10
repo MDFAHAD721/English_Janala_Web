@@ -128,3 +128,25 @@ const displayLesson = (lessons) => {
 }
 
 showLesson();
+
+// VOCABULARY SEARCH SECTION
+document.getElementById("search-btn").addEventListener("click",()=>{
+    removeClass();
+    const input = document.getElementById("input-btn");
+    const inputValue = input.value.trim().toLowerCase();
+    console.log(inputValue);
+
+    const url = "https://openapi.programming-hero.com/api/words/all"
+
+    fetch(url)
+    .then((res)=> res.json())
+    .then((json)=> {
+        const allWords  = (json.data);
+
+        const filterWords = allWords.filter(words => words.word.
+            toLowerCase().includes(inputValue)
+        );
+
+        displayCard(filterWords);
+    });
+})
