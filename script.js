@@ -1,9 +1,26 @@
 const createElement = (syn) =>{
     const create = syn.map((syno)=> `<span class="btn btn-soft btn-primary">${syno}</span>`);
-
     return(create.join(" "));
 }
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+    utterance.rate = 0.5;
+    utterance.pitch = 1.2;
+    utterance.volume = 1;
+  window.speechSynthesis.speak(utterance);
+}
+
+const manageSpinner = (status) =>{
+    if(status == true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("word-container").classList.add("hidden");
+    }else{
+        document.getElementById("word-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+}
 
 const showLesson = () => {
     fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -23,6 +40,7 @@ const removeClass = () => {
 }
 
 const displayWord = (id) => {
+    manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
     fetch(url).
     then((res)=>res.json()).
@@ -37,6 +55,7 @@ const displayWord = (id) => {
 }
 
 const loadWordDetail = (id) => {
+
     const url = `https://openapi.programming-hero.com/api/word/${id}`
 
     fetch(url).then((res)=>res.json()).then(json=>showWordDetail(json.data));
@@ -73,6 +92,7 @@ const showWordDetail = (details) => {
 }
 
 const displayCard = (words) => {
+    manageSpinner(true);
     const wordContainer = document.getElementById("word-container");
 
     wordContainer.innerHTML = "";
@@ -85,7 +105,9 @@ const displayCard = (words) => {
         <h2 class="hind-siliguri-font text-4xl font-semibold">নেক্সট Lesson এ যান</h2>
     </div>
         `;
+        manageSpinner(false);
         return;
+
     }
     
     for(let word of words) {
@@ -101,7 +123,7 @@ const displayCard = (words) => {
             <div onclick="loadWordDetail(${word.id})" class="bg-gray-100 card-btn px-2 py-1.5 rounded-lg">
                 <i class="fa-solid fa-info"></i>
             </div>
-            <div class="bg-gray-100 card-btn px-2 py-1.5 rounded-lg flex items-center">
+            <div onclick="pronounceWord('${word.word}')" class="bg-gray-100 card-btn px-2 py-1.5 rounded-lg flex items-center">
                 <i class="fa-solid fa-volume-high"></i>
             </div>
             </div>
@@ -109,6 +131,8 @@ const displayCard = (words) => {
         `
         wordContainer.appendChild(allCards);
     }
+    manageSpinner(false);
+    
 }
 
 const displayLesson = (lessons) => {
@@ -125,6 +149,7 @@ const displayLesson = (lessons) => {
         `
         levelContainer.appendChild(lessonDiv);
     }
+    
 }
 
 showLesson();
@@ -134,6 +159,10 @@ document.getElementById("search-btn").addEventListener("click",()=>{
     removeClass();
     const input = document.getElementById("input-btn");
     const inputValue = input.value.trim().toLowerCase();
+    if(inputValue == 0 || inputValue == ""){
+        alert("Please write a word");
+        return;
+    }
     console.log(inputValue);
 
     const url = "https://openapi.programming-hero.com/api/words/all"

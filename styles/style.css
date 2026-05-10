@@ -2,7 +2,7 @@
   font-family: "Poppins", sans-serif;
 }
 html {
-    scrollbar-gutter: stable;
+    overflow-y: scroll;
 }
 .hind-siliguri-font{
   font-family: "Hind Siliguri", sans-serif;
