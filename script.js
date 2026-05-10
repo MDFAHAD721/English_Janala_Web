@@ -176,6 +176,24 @@ document.getElementById("search-btn").addEventListener("click",()=>{
             toLowerCase().includes(inputValue)
         );
 
-        displayCard(filterWords);
+        console.log(filterWords);
+
+        const wordContainer = document.getElementById("word-container");
+
+        if(filterWords.length === 0){
+            wordContainer.innerHTML = "";
+            wordContainer.innerHTML = `
+                <div class="col-span-full bg-gray-100 mx-auto text-center space-y-3 rounded-3xl px-6 w-11/12">
+            <img class="mx-auto" src="assets/alert-error.png" alt="">
+            <h3 class="text-xl font-light hind-siliguri-font">দুঃখিত</h3>
+            <h2 class="hind-siliguri-font text-4xl font-semibold">এখানে শব্দ খুজে পাওয়া যায় নি</h2>
+                </div>
+            `
+           
+        } else{
+             displayCard(filterWords);
+        }        
+        input.value = "";
+
     });
 })
