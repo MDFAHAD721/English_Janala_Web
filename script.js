@@ -136,7 +136,7 @@ const displayCard = (words) => {
 }
 
 const displayLesson = (lessons) => {
-    // console.log(lessons);
+
     const levelContainer = document.getElementById("level-container");
 
     levelContainer.innerHTML = "";
@@ -163,7 +163,6 @@ document.getElementById("search-btn").addEventListener("click",()=>{
         alert("Please write a word");
         return;
     }
-    console.log(inputValue);
 
     const url = "https://openapi.programming-hero.com/api/words/all"
 
@@ -175,8 +174,6 @@ document.getElementById("search-btn").addEventListener("click",()=>{
         const filterWords = allWords.filter(words => words.word.
             toLowerCase().includes(inputValue)
         );
-
-        console.log(filterWords);
 
         const wordContainer = document.getElementById("word-container");
 
